@@ -13,7 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// build ffmpeg command
 	$ffmpeg_cmd = 'ffmpeg -re -i "'.$video_path.'"';
 	$ffmpeg_cmd .= ' -c:v '.$video_codec.' -c:a '.$audio_codec.' -preset '.$preset.' -b:v '.$bitrate.'k';
-	$ffmpeg_cmd .= ' -s '.$resolution.' -r '.$framerate.' -f flv "rtmp://a.rtmp.youtube.com/live2/'.$stream_key;
+	$ffmpeg_cmd .= ' -s '.$resolution.' -r '.$framerate.' -f flv "rtmp://a.rtmp.youtube.com/live2/'.$stream_key.'" ';
+	
+	set_time_limit(1800);
+	ob_implicit_flush(true);
 	// start ffmpeg process
 	$descriptorspec = array(
 		0 => array('pipe', 'r'), // stdin is a pipe that the child will read from
@@ -25,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (is_resource($process)) {
 		// send success response to client
 		$response = array(
-			'status' => 'success'
+			'status' => 'success',
+			'ffmpeg_cmd' => $ffmpeg_cmd
 		);
 		echo json_encode($response);
 

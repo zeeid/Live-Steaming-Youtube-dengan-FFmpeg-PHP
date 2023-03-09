@@ -3,6 +3,7 @@
 <head>
 	<title>Live Streaming YouTube dengan FFmpeg</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 	<h1>Live Streaming YouTube dengan FFmpeg</h1>
@@ -73,6 +74,30 @@
 
 <div id="status"></div>
 
-<script src="main.js"></script>
+<!-- <script src="main.js"></script> -->
+<script>
+
+	$("#livestream-form").submit(function (e) { 
+		e.preventDefault();
+		console.log("KLIK")
+		var data = $("#livestream-form").serialize();
+		$.ajax({
+			type: "POST",
+			url: "livestream.php",
+			data: data,
+			beforeSend: function() {
+				// setting a timeout
+				console.log("WAIT")
+			},
+			success: function (response) {
+				$("#status").html(response)
+			},
+			error: function(xhr) { // if error occured
+				alert("Error occured.please try again");
+			},
+		});
+	});
+
+</script>
 </body>
 </html>
