@@ -1,0 +1,51 @@
+body {
+	font-family: Arial, sans-serif;
+	padding: 20px;
+}
+
+h1 {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+form label {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+form input[type=text], form input[type=number], form select {
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+form select {
+	max-width: 200px;
+}
+
+form button {
+	padding: 10px;
+	font-size: 18px;
+	background-color: #3498db;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#status {
+	margin-top: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}

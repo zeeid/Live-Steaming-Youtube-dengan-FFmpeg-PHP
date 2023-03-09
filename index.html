@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Live Streaming YouTube dengan FFmpeg</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Live Streaming YouTube dengan FFmpeg</h1>
+	<form id="livestream-form">
+		<label for="stream_key">Masukkan Kunci Stream YouTube:</label>
+		<input type="text" id="stream_key" name="stream_key" required>
+		<br><br>
+		<label for="video_path">Masukkan Lokasi Video:</label>
+		<input type="text" id="video_path" name="video_path" required>
+		<br><br>
+		<label for="video_codec">Pilih Codec Video:</label>
+		<select id="video_codec" name="video_codec">
+			<option value="libx264">libx264</option>
+			<option value="h264">h264</option>
+			<option value="vp8">vp8</option>
+			<option value="vp9">vp9</option>
+		</select>
+		<br><br>
+		<label for="audio_codec">Pilih Codec Audio:</label>
+		<select id="audio_codec" name="audio_codec">
+			<option value="aac">aac</option>
+			<option value="mp3">mp3</option>
+			<option value="opus">opus</option>
+			<option value="vorbis">vorbis</option>
+		</select>
+		<br><br>
+		<label for="preset">Pilih Preset FFmpeg:</label>
+		<select id="preset" name="preset">
+			<option value="ultrafast">ultrafast</option>
+			<option value="superfast">superfast</option>
+			<option value="veryfast" selected>veryfast</option>
+			<option value="faster">faster</option>
+			<option value="fast">fast</option>
+			<option value="medium">medium</option>
+			<option value="slow">slow</option>
+			<option value="slower">slower</option>
+			<option value="veryslow">veryslow</option>
+		</select>
+		<br><br>
+		<label for="bitrate">Masukkan Bitrate Video (dalam kbps):</label>
+		<input type="number" id="bitrate" name="bitrate" value="3000" min="1000" max="10000" required>
+		<br><br>
+		<label for="resolution">Pilih Resolusi Video:</label>
+		<select id="resolution" name="resolution">
+			<option value="640x360">640x360</option>
+			<option value="854x480">854x480</option>
+			<option value="1280x720" selected>1280x720</option>
+			<option value="1920x1080">1920x1080</option>
+		</select>
+		<br><br>
+		<label for="framerate">Pilih Framerate Video:</label>
+		<select id="framerate" name="framerate">
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="30" selected>30</option>
+			<option value="60">60</option>
+		</select>
+	<br><br>
+	<button type="submit" id="start-streaming-btn">Mulai Live Streaming</button>
+</form>
+
+<div id="status"></div>
+
+<script src="main.js"></script>
+</body>
+</html>
